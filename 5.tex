@@ -1561,7 +1561,67 @@ V=\frac{1}{6}h\left(S+4S_{0}+S' \right).\]
 
 \begin{figure}[htp]
     \centering
-\includegraphics[scale=0.7]{fig/2-104.png}
+\begin{tikzpicture}[>=stealth]
+\tkzDefPoints{0.5/0/a, 10.5/0/b, 12.5/2.5/c}
+\tkzDefPointsBy[translation=from b to c](a){d}
+
+\def\x{1.75}
+
+\node at (12,2.25){$\alpha$};
+
+\draw(2,1) arc (180:0:\x); 
+\draw[dashed](2,1) arc [start angle=180, end angle =0, x radius=\x, y radius=0.4];
+\draw[](2,1) arc [start angle=180, end angle =360, x radius=\x, y radius=0.4];
+\draw[dashed](2,1)--(2+3.5,1);
+\draw[dashed](2+\x,1)node[below]{$O$}--+(0,\x);
+\draw[dashed](2+\x,1)--node[right]{$R$}++(30:\x)--++(-\x*0.5*1.732,0);
+\node at (2+\x,1+\x*.25)[left]{$\ell$};
+\fill[pattern= north east lines](2+\x,1+\x*.5) ellipse[x radius = \x/2*1.732, y radius = 0.35];
+\tkzDefPoints{2+\x/1/O, 2+\x+\x*0.5*1.732/1+\x*.5/N'}
+\draw(N') arc [start angle=0, end angle =-180, x radius = \x/2*1.732, y radius = 0.35];
+\draw[dashed](N') arc [start angle=0, end angle =180, x radius = \x/2*1.732, y radius = 0.35];
+
+
+\draw[dashed](7,1) arc [start angle=180, end angle =0, x radius=\x, y radius=0.4];
+\draw[](7,1) arc [start angle=180, end angle =360, x radius=\x, y radius=0.4];
+
+\draw[dashed](7,1+\x*.5) arc [start angle=180, end angle =0, x radius=\x, y radius=0.4];
+\draw[](7,1+\x*.5) arc [start angle=180, end angle =360, x radius=\x, y radius=0.4];
+
+
+\fill[pattern  = north east lines](7+\x,1+\x*.5) ellipse [x radius = \x, y radius = 0.4];
+\draw[dashed, fill=white](7+\x,1+\x*.5) ellipse [x radius = .5*\x, y radius = 0.2];
+\draw[<->](7+\x,0.5*\x+1)node[left]{$O_1$}--node{$\ell$}(7+1.5*\x,0.5*\x+1)node[right]{$B$};
+
+\node[left] at (7,0.5*\x+1){$K$};
+\node[right] at (7+2*\x,0.5*\x+1){$N$};
+
+\tkzDefPoints{7+\x/1/O', 7+\x/1+\x*.5/N}
+
+\draw[](7+\x, \x+1) ellipse [x radius=\x, y radius=0.4];
+
+\draw[](7, 1)--+(0,\x)node[above left]{$L$};
+\draw[](7+2*\x, 1)--+(0,\x)node[above right]{$P$};
+\draw[dashed](7+2*\x, \x+1)--(2+\x,\x+1);
+\draw[dashed](7+2*\x, \x+1)--(7+\x,1)node[below]{$O'$}--(7, \x+1);
+\draw[dashed](7+2*\x, 1)--(7,1);
+\draw[dashed](7+\x, 1)--+(0,\x);
+
+
+
+\tkzDefPoints{2+\x/1/O, 2+2*\x/1/R', 7/1/L', 7+2*\x/1/P', 7/1+\x/L, 7+2*\x/1+\x/P}
+\tkzInterLC[](c,d)(O,R')
+\tkzGetPoints{tmp1}{tmp2}
+\tkzInterLL(L,L')(c,d) \tkzGetPoint{tmp3}
+\tkzInterLL(P,P')(c,d) \tkzGetPoint{tmp4}
+
+\tkzDrawSegments(a,b b,c d,a c,tmp4 tmp2,d tmp1,tmp3)
+
+
+
+
+
+\end{tikzpicture}
     \caption{}
 \end{figure}
 
